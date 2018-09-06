@@ -1,0 +1,30 @@
+﻿@model Text_EP.Models.te
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>tx</title>
+</head>
+<body>
+    <div> 
+        <form action="/EP/fi" method="post" enctype="multipart/form-data">
+            <samp>选择图片</samp>
+            <input id="File1" type="file" name="Picture" />
+            <input type="submit" value="提交" />
+            <input type="hidden" name="isfirst" />
+
+        </form>
+       
+    @*@Html.BeginForm("tx", "EP", FormMethod.Post, new { enctype = "multipart/form-data" })
+        {
+
+
+        }*@
+    </div>
+</body>
+</html>

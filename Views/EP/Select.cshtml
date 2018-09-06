@@ -1,0 +1,84 @@
+﻿@using Text_EP.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>文章总览</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('#backUp').click(function ()//滑动到顶部
+            {
+                $('html,body').animate({ scrollTop: '0px' }, 2000);
+                return false;
+            });
+
+            $('#backDown').click(function ()//滑动到底部
+            {
+                $('html,body').animate({ scrollTop: document.getElementsByTagName('BODY')[0].scrollHeight }, 2000);
+                return false;
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div style="width:auto;">
+
+        <table align="center" style="width:500px;" class="table table-bordered table-hover">
+            <tr>
+                <td colspan="5">
+                    <a href="/EP/Index">添加文章</a>
+                </td>
+                <td colspan="2">
+                    <input id="backDown" type="button" class="btn btn-default btn-sm btn-info" value="跳到底部" />
+                </td>
+            </tr>
+            <tr>
+                <th>文章标题</th>
+                <th>文章链接</th>
+                <th>封面大图链接</th>
+                <th>文章归属</th>
+                <th>文章类型</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Titles</td>
+                    <td>@item.Links</td>
+                    <td>@item.PicPath</td>
+                    <td>@item.Doctor</td>
+                    <td>@item.TitlesType</td>
+                    <td>@item.CreatedTime</td>
+                    <td>@Html.ActionLink("删除", "delete", "EP", new { id = item.id }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('你确定要删除吗？')" })</td>
+
+                </tr>
+            }
+            <tr>
+                <td colspan="5"></td>
+
+                <td colspan="2">
+                    <input id="backUp" type="button" class="btn btn-default btn-sm btn-info" value="返回顶部" />
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+</body>
+</html>
